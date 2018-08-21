@@ -41,34 +41,7 @@ Before modifying the application, commit the project to a new git repository. En
 	$ git add .
 	$ git commit -m "initial commit"
 
-Recall that `git add .` uses the `.` alias to recursively add all the files and subfolders to the repository and that a commit requires a commit message which is given with the `-m` flag.
-
-
-## Prep and push to heroku
-
-It is a common practice to regularly deploy changes to a web application. Unlike desktop or mobile applications which must be downloaded for users to see changes, web applications reside at a singlely accessed location, often  a single web server, which allows developers to make changes immediately available.
-
-Normally changes are first deployed to a *pre-production* environment where they are tested. Pre-production acts as an intermediary between a *local* machine like your laptop and the actual *production* environment, such as heroku. Imagine having another heroku server to test all your code on but which you do not let the public access.
-
-We'll skip the pre-production step and deploy directly to a public heroku server. Recall the three steps required: 1. set up a Procfile for heroku, 2. create the heroku app, and 3. push the application to heroku's servers with git.
-
-Ensure you are in the project's main folder, also known as its *root* directory, and create the Procfile and heroku app:
-
-	$ touch Procfile
-	$ echo "web: node ./bin/www" >> Procfile
-	$ heroku create
-	
-Add the new Procfile to the git repository. Any time you make changes to your application, you must commit them in the repository before uploading them to heroku:
-
-	$ git add Procfile
-	$ git commit -m "added heroku procfile"
-	
-Upload the changes to heroku and view them:
-
-	$ git push heroku master
-	$ heroku open
- 
- 
+Recall that `git add .` uses the `.` alias to recursively add all the files and subfolders to the repository and that a commit requires a commit message which is given with the `-m` flag. 
 
 ## Static html
 
@@ -144,13 +117,13 @@ Express is now serving up the public/index.html page implictly and explicity for
 
 Note that it is not necessary to include 'public' in the url, such as http://localhost:3000/public/index.html. Code in the  application ensures that express looks in the public directory without it being included in the url. The *public* directory is consequently known as the *root* directory for static content, and it is not possible to access static content outside it.
 
-## Commit the changes and upload them to heroku
+## Commit the changes
 
 You've made changes to the application, so it's time to deploy again. Add any new files you created to the git repository, either by name or using the `.` shortcut, commit them with a commit message, and push them to heroku:
 
 	$ git add public/index.html
 	$ git commit -m "added static index page"
-	$ git push heroku master
+	$ git push origin master
 
 Confirm your changes on heroku:
 	

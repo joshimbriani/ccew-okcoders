@@ -17,22 +17,15 @@ Copy all the html files from the public directory in this repository into the pu
 
 Each file includes html and content that is already marked up with id and class attributes. But the style definitions are missing! Add style definitions so that each documents appears as it should. Refer to the comments in each html file for further instructions.
 
-**Test your application and upload it to heroku**
-
-Test your application locally as you go, and upload the express application to heroku using git. You'll need to create a git repository, continually add content to it, create a heroku application, and upload to it.
-
-If you run out of Heroku application space because you are only allowed five before having to add a credit card, simply log into the Heroku dashboard and delete some of your applications:
-
-- [Log into Heroku Dashboard](https://dashboard.heroku.com/apps)
-- Click the settings gear icon on the right side of the page for an application
-- Scroll down to **Delete app** and click it
-- Follow instructions
-
 ## Review css selectors and properties
 
 Mozilla has excellent css documention. Review the properties list and make sure you understand selectors. We'll be using them with JavaScript as well.
 
 [Mozilla's CSS Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+
+## Make sure you understand flexbox
+
+[CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) has a great Flexbox tutorial. Take the time and make sure you understand it! It makes your life easier!
 
 ## Continue reviewing material on the command line and git
 

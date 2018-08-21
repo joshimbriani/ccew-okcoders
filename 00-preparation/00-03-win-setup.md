@@ -34,14 +34,6 @@ Install Express:  Launch Git Bash from your Start menu and at the terminal, type
 
 	npm install -g express-generator
 	
-## Set Up Heroku
-
-(You may skip this step for now)
-	
-Sign up for a free account at Heroku: [https://www.heroku.com/](https://www.heroku.com/)
-
-Install the Heroku Command Line Interface: Follow the instructions at [https://devcenter.heroku.com/articles/heroku-command](https://devcenter.heroku.com/articles/heroku-command). Note you will need to install the Heroku Toolbelt.
-
 ## Set up your SSH keys
 
 SSH Keys are used to establish a secure connection to GitHub and Heroku. 
@@ -52,6 +44,6 @@ If you get an error when trying to add your keys to the ssh-agent, type the foll
 
 	eval `ssh-agent -s`
 
-Follow the instructions at Heroku to register your SSH keys. **You do not need to create a new public/private keypair.** [Register SSH Keys with Heroku](https://devcenter.heroku.com/articles/keys)
+(SSH keys are an optional step but highly recommended. Without them, you will need to enter your Github password anytime that you push a commit.)
 
 Nice work! You just set up your development environment and are already using the command line! This is serious stuff!

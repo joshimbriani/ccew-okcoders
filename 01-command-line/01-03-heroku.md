@@ -1,20 +1,22 @@
-Creating an Node.js + Express App With Heroku
+Creating an Node.js + Express + React App
 ====
 
 [Heroku](https://www.heroku.com/) is a cloud application platform that makes it easy for developers to deploy their web applications to the public internet. Heroku manages servers and other resources so that developers can focus on writing code rather than maintaining hardware and internet systems.
 
 # References
 
-The following instructions are based on Heroku's [Getting started with nodejs](https://devcenter.heroku.com/articles/getting-started-with-nodejs) tutorial.
 
 Additional material on Node.js and Express may be found at:
 
 - Node: [nodejs.org](http://nodejs.org/)
 - Express: [expressjs.com](http://expressjs.com/)
+- React: [reactjs.org](https://reactjs.org/)
 
-# Basic Express Application with Heroku
+
+# Basic Express + React Application
 
 Ensure you are familiar with the command line and git before working through this material.
+Also ensure you have installed nodemon (`npm install -g nodemon`)
 
 ## Create a new express application
 
@@ -57,63 +59,21 @@ A node express web application will continue to run until it crashes or is termi
 
 	$ ^C
 
-## Prepare the application for heroku
+But notice that your app will not auto-reload if you change a file. To get around that, run `nodemon node app.js`. That will autoreload whenever you change a file.
 
-The application is now working locally, but we also want to upload it to Heroku's servers. Before doing that, Heroku requires additional information about the application. Specifically, Heroku uses a *Procfile* that tells it how to start the application.
+## Create the React Client
 
-Use the `touch` command and `echo` with *redirection* to create the file and add a line of text to it.
+Now we're going to go ahead and create the client side version of our application.
 
-	$ touch Procfile
-	$ echo "web: node ./bin/www" >> Procfile
+In your app's folder, go ahead and run `npx create-react-app client`
 
-By itself, `node ./bin/www` is the command that starts the web application and is the same command that is used by `npm start`.
+Now `cd` into the client directory and run `PORT=3001 yarn start`. We need to change the port for our running app since by default Express runs on port 3000 and we don't want collisions. It will start a web browser with your React app at localhost:3001.
 
-View the application using `foreman`, a utility used by Heroku to start a  web application. Foreman can also be used to start an application locally. **On Windows**, foreman may not work. See the note below.
-
-	$ foreman start
-	
-Foreman uses a slightly different URL to view the application:
-
-	http://localhost:5000/
-
-Node that foreman runs the web server on port 5000.
-
-**On Windows**, foreman may not work. If foreman does not work, continue starting the app with `npm start`, and continue using the original URL with port 3000 in your web browser.
-
-<!--
-The command may not work becuase Heroku does not set up the foreman program correctly. If foreman doesn't work on Windows, modify the *PATH variable* to let Git Bash know where foreman is.
-
-Follow the instructions here to modify your *System Path* variable: [how-to-set-the-windows-path-in-windows-7](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx)
-
-You need to add the following text to your path variable: `;C:\Program Files (x86)\Heroku\ruby-1.9.2\bin`, including that semicolon at the beginning.
-
-Restart Git Bash for the changes to your path to take effect. The terminal should now be able to find foreman:
-
-	$ which foreman
-	/c/Program Files (x86)/Heroku/ruby-1.9.2/bin/foreman
-
-It's possible that foreman will still not work. Execute `foreman` in the console. If there is an error about a *bad interpreter*, install an older version of foreman. The error looks like:
-
-	$ foreman start
-	sh.exe": /c/Program Files (x86)/Heroku/ruby-1.9.2/bin/foreman: "c:/Program: bad interpreter: No such file or directory
-	
-Install an older version of foreman with:
-
-	$ gem uninstall foreman
-	$ gem install foreman -v 0.61
-
-Type `Y` and press enter when asked if you want to remove the executable.
-
-If you cannot get foreman working on Windows, continue to start the web application with `npm start`.
--->
-
-Use Control-C (^C) again to stop foreman or node:
-
-	$ ^C
+So you'll see a message that says "Note that the development build is not optimized." By running the React app this way, it will auto reload your changes so you never have to worry about needing to restart the app, just like nodemon!
 
 ## Commit the application to a git repository
 
-Heroku uses git to upload applications to its servers. Create an empty git repository for the web application:
+Create an empty git repository for the web application:
 
 	$ git init
 	Initialized empty Git repository in /Users/okcoders/Documents/OK-Coders/1-bash-heroku/heroku-test/.git/
@@ -123,34 +83,9 @@ Add and commit the project's files to the git repository:
 	$ git add .
 	$ git commit -m "Initial Commit"
 	
-## Create a heroku app and upload your application
+## Push your app to Github
 	
-You are now ready to use git to upload, or *push*, your application to Heroku's servers. Use Heroku's command line utility to first create a new Heroku application:
-
-	$ mbp-phil:heroku-test node-app$ heroku create
-	Creating desolate-brook-2377... done, stack is cedar
-	http://desolate-brook-2377.herokuapp.com/ | git@heroku.com:desolate-brook-2377.git
-	Git remote heroku added
-
-Notice that Heroku automatically added a remote repository named *heroku* to the git project when you created the new Heroku app.
-
-Push the project to Heroku's server using `git push` and the *heroku* name provided. Push the *master* branch:
-
-	$ git push heroku master
-	
-Confirm that the application is running on Heroku with the `heroku ps` command:
-
-	$ heroku ps
-	=== web (1X): `node ./bin/www`
-	web.1: up 2014/06/02 13:41:03 (~ 1m ago)
-
-*Web.1* corresponds to the web command that was set up in the Procfile, and Heroku confirms that it is up and running. 
-
-View the application on the public internet:
-
-	$ heroku open
-	
-You just created a web application and put it on the internet!
+Go onto your Github profile page and create a new public repo. You'll see a few commands that you should run in your repo to add your Github repo as a remote branch. Follow those instructions and you'll upload your code to Github!
 
 ## Update your application
 
@@ -158,4 +93,4 @@ Any additional changes you make to the application should be tracked and committ
 	
 	$ git add .
 	$ git commit -m "Your new commit message - change this"
-	$ git push heroku master
+	$ git push origin master
