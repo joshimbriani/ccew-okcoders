@@ -17,6 +17,8 @@ Mozilla includes a page about CSS Colors.
 
 Code Academy offers an html & css track. It's great practice. Skip ahead to the css if the html is too easy.
 
+[Codepen.io](http://codepen.io)
+
 ## Style definitions
 
 CSS works by targeting elements of an html document with what are called *selectors* and associating *style declarations* with them.
