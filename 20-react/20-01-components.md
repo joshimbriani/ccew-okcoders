@@ -1,5 +1,5 @@
 React & React Components
-================
+========================
 
 So now that we've hyped React up, what is React and what can it do?
 
